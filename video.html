@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!--Para que involucre signos como tildes, etc-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caminos del Sol</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Fuentes para los titulos y los textos-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Amarante&display=swap" rel="stylesheet">
+
+
+    <style>
+        :root {
+        --primary:#064635;
+        --secondary: #519259;
+        --tertiary: #F0BB62;
+        --quaternary: white;
+        }
+/* Body */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('img/fondo.jpg')center center fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+/* boton subir */
+        #btnScrollTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary); 
+            color: var(--quaternary);
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+#btnScrollTop:hover {
+    background-color: var(--secondary);
+}
+
+    /* Header */
+        header {
+              font-family: "Almendra", serif;
+              font-weight: 700;
+              font-style: normal;
+
+            background-color: var(--primary);
+            height: 100px;
+            color:var(--quaternary);
+            padding: 20px 0; /*los dos valores son el top y el right, se puede colocar abajo e izquierda */
+            text-align: center;
+            position:static;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav { /* Etiqueta de navegacion*/
+            margin-top: 10px;
+        }
+        
+        nav a { /* Navegación */
+            color:var(--quaternary);
+            text-decoration: none; /* Quita la linea que viene por defecto*/
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary);  /* Cambia el color al pasar el mouse */
+        }
+
+
+    /* Título principal de la página */
+        .titulo-pagina {
+            margin: 30px 0;
+            text-align: center;
+            color: var(--quaternary);
+              font-family: "Almendra", serif;
+              font-weight: 700;
+              font-style: normal;
+   
+        }
+
+
+    /* Contenedor principal*/
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding: 0 20px;
+        }
+    
+        .descripcion {
+            font-size: 17px;
+            color: var(--quaternary);
+            padding: 5px;
+            text-align: justify;
+        }
+
+    /* Contenedor de "Quienes somos" */
+        .contenedor-somos {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            padding: 15px;
+        }
+        .caja-somos {
+            background: var(--primary);
+            padding: 15px;
+            width: 100%;
+            max-width: 830px;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: nowrap;
+            border-radius: 8px;
+            border: 2px solid whitesmoke;
+              font-family: "Amarante", serif;
+              font-weight: 400;
+              font-style: normal;
+
+        }
+        .caja-somos img {
+            object-fit: cover;
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+        }
+        
+    /* Botón de enlace */
+        .boton-enlace a {
+            display: flex;
+            justify-content: center;
+            background-color: var(--primary);
+            color:var(--quaternary);
+            padding: 10px 20px;
+            text-align: center;
+            border: 2px solid white; 
+            text-decoration: none;
+            border-radius: 20px;
+            font-size:16px;
+            transition: background-color 0.3s;
+        }
+        .boton-enlace a:hover {
+            background-color: var(--secondary);
+        }
+
+    /* Footer, es el pie de pagina */
+        footer {
+            background-color: var(--primary);
+            color: var(--quaternary);
+            padding: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .iconos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+
+        }
+
+        .iconos a {
+            color: var(--quaternary);
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .iconos a:hover {
+            color: var(--secondary);
+        }
+
+
+    /* Responsive para móviles: apilar cajas */
+        @media (max-width: 700px) {
+            .contenedor {
+                flex-wrap: wrap;
+            }
+        } 
+
+    /* Estilo de las cajas dinamicas */
+        .caja {
+            background-image:linear-gradient(180deg,  var(--primary) 0%, var(--tertiary) 95%);
+            border-radius: 8px;
+            border: 2px solid whitesmoke;
+            padding: 15px;
+            width: 100%;
+            max-width: 400px;
+            transition: 
+                transform 0.3s ease,
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+              font-family: "Amarante", serif;
+              font-weight: 400;
+              font-style: normal;
+
+        }
+
+    /* Hover dinámico */
+        .caja:hover {
+            transform: translateY(-10px);
+            background:var(--primary);
+        }
+        
+        .caja img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+/* Estilos para el formulario */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+/* Itinerario */
+        .itinerary {
+            color: var(--quaternary);
+              font-family: "Amarante", serif;
+              font-weight: 400;
+              font-style: normal;
+
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--primary);
+            border: 1px solid whitesmoke;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid white;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: var(--secondary);
+        }
+
+    /* Estilo Listas */
+        .tabla-ruta {
+            text-align: center;
+            font-size: 20px;
+        }
+        ol, ul {
+            list-style-position: inside;
+            padding-left: 0;
+            margin: 0;
+        }
+/* estilo caja-problematica */
+        
+        .caja-problematica {
+            background: var(--primary);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid whitesmoke;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 30px;
+            justify-content: center;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1500px;
+              font-family: "Amarante", serif;
+              font-weight: 400;
+              font-style: normal;
+
+        }
+
+        
+        .caja-columna {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1><STROng>PITCH: CAMINOS DEL SOL 🌞</STROng></h1>
+    </header>
+    
+    <!-- video -->
+        <section id="somos">
+        <div class="contenedor">   
+            <iframe width="800" height="800" 
+                src="https://www.youtube.com/embed/n0Rog081NV8" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+            
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Agencia de Viajes "Caminos del Sol" &copy; 2025</p>
+        <div class="iconos">
+            <a href="https://www.facebook.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-facebook-square"></i>
+            </a>
+            <a href="https://www.instagram.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.youtube.com/c/CaminosdelSol" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html> 

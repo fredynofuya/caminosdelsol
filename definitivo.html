@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!--Para que involucre signos como tildes, etc-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caminos del Sol</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Fuentes para los titulos y los textos-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Amarante&display=swap" rel="stylesheet">
+
+
+    <style>
+        :root {
+        --primary:#064635;
+        --secondary: #519259;
+        --tertiary: #F0BB62;
+        --quaternary: white;
+        }
+/* Body */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('img/fondo.jpg')center center fixed;
+        }
+/* boton subir */
+        #btnScrollTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary); 
+            color: var(--quaternary);
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+#btnScrollTop:hover {
+    background-color: var(--secondary);
+}
+
+    /* Header */
+        header {
+              font-family: "Almendra", serif;
+              font-weight: 700;
+              font-style: normal;
+
+            background-color: var(--primary);
+            height: 100px;
+            color:var(--quaternary);
+            padding: 20px 0; /*los dos valores son el top y el right, se puede colocar abajo e izquierda */
+            text-align: center;
+            position:static;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav { /* Etiqueta de navegacion*/
+            margin-top: 10px;
+        }
+        
+        nav a { /* Navegación */
+            color:var(--quaternary);
+            text-decoration: none; /* Quita la linea que viene por defecto*/
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary);  /* Cambia el color al pasar el mouse */
+        }
+
+
+    /* Título principal de la página */
+        .titulo-pagina {
+            margin: 30px 0;
+            text-align: center;
+            color: var(--quaternary);
+              font-family: "Almendra", serif;
+              font-weight: 700;
+              font-style: normal;
+   
+        }
+
+
+    /* Contenedor principal*/
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding: 0 20px;
+        }
+    
+        .descripcion {
+            font-size: 17px;
+            color: var(--quaternary);
+            padding: 5px;
+            text-align: justify;
+        }
+
+    /* Contenedor de "Quienes somos" */
+        .contenedor-somos {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            padding: 15px;
+        }
+        .caja-somos {
+            background: var(--primary);
+            padding: 15px;
+            width: 100%;
+            max-width: 830px;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: nowrap;
+            border-radius: 8px;
+            border: 2px solid whitesmoke;
+              font-family: "Amarante", serif;
+              font-weight: 400;
+              font-style: normal;
+
+        }
+        .caja-somos img {
+            object-fit: cover;
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+        }
+        
+    /* Botón de enlace */
+        .boton-enlace a {
+            display: flex;
+            justify-content: center;
+            background-color: var(--primary);
+            color:var(--quaternary);
+            padding: 10px 20px;
+            text-align: center;
+            border: 2px solid white; 
+            text-decoration: none;
+            border-radius: 20px;
+            font-size:16px;
+            transition: background-color 0.3s;
+        }
+        .boton-enlace a:hover {
+            background-color: var(--secondary);
+        }
+
+    /* Footer, es el pie de pagina */
+        footer {
+            background-color: var(--primary);
+            color: var(--quaternary);
+            padding: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .iconos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+
+        }
+
+        .iconos a {
+            color: var(--quaternary);
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .iconos a:hover {
+            color: var(--secondary);
+        }
+
+
+    /* Responsive para móviles: apilar cajas */
+        @media (max-width: 700px) {
+            .contenedor {
+                flex-wrap: wrap;
+            }
+        } 
+
+    /* Estilo de las cajas dinamicas */
+        .caja {
+            background-image:linear-gradient(180deg,  var(--primary) 0%, var(--tertiary) 95%);
+            border-radius: 8px;
+            border: 2px solid whitesmoke;
+            padding: 15px;
+            width: 100%;
+            max-width: 400px;
+            transition: 
+                transform 0.3s ease,
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+              font-family: "Amarante", serif;
+              font-weight: 400;
+              font-style: normal;
+
+        }
+
+    /* Hover dinámico */
+        .caja:hover {
+            transform: translateY(-10px);
+            background:var(--primary);
+        }
+        
+        .caja img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+/* Estilos para el formulario */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+/* Itinerario */
+        .itinerary {
+            color: var(--quaternary);
+              font-family: "Amarante", serif;
+              font-weight: 400;
+              font-style: normal;
+
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--primary);
+            border: 1px solid whitesmoke;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid white;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: var(--secondary);
+        }
+
+    /* Estilo Listas */
+        .tabla-ruta {
+            text-align: center;
+            font-size: 20px;
+        }
+        ol, ul {
+            list-style-position: inside;
+            padding-left: 0;
+            margin: 0;
+        }
+/* estilo caja-problematica */
+        
+        .caja-problematica {
+            background: var(--primary);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid whitesmoke;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 30px;
+            justify-content: center;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1500px;
+              font-family: "Amarante", serif;
+              font-weight: 400;
+              font-style: normal;
+
+        }
+
+        
+        .caja-columna {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1><STROng>CAMINOS DEL SOL 🌞</STROng></h1>
+        <nav>
+            <a href="#cuzco">Cuzco</a>
+            <a href="#atracciones">Atracciones</a>
+            <a href="#somos">Quiene somos</a>
+            <a href="#voluntariado">Voluntariados</a>
+           
+        </nav>
+    </header>
+
+    <!--Segunda parte Ciudad Cusco-->
+    <section id="cuzco">
+        <h2 class="titulo-pagina">CUZCO.</h2>
+        <div class="contenedor">
+            <div class="caja">
+                <img src="img/cuzco.webp" alt="machu picchu">    
+            </div>
+            <div class="caja">
+                <div class="descripcion">
+                    <p>
+                    En Cusco, cada rincón está plagado de historia. La antigua capital del Perú (durante el Imperio Inca), aún mantiene vestigios de lo que fuera el poderío más importante de esta antigua civilización. 
+                    La historia milenaria se respira en cada paso que des por las calles de sus pueblos, que parecen haberse detenido en el tiempo. Sus ciudades, que están plagadas de tanto misticismo que no querrás irte jamás. Y si tienes que partir, siempre habrá ese deseo que te consume por dentro para volver lo más pronto posible.
+                    </p>
+                </div>
+                <div class="boton-enlace">
+                    <a href="https://www.worldhistory.org/trans/es/1-12510/cuzco/" target="_blank" >Más detalles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Cuarta parte Lugares a visitar, planes y costos-->
+    <section id="atracciones">
+        <h2 class="titulo-pagina">LUGARES A VISITAR</h2>
+    <!-- GALERÍA DE CIUDADES -->
+        <div class="contenedor">
+            <div class="caja">
+                <img src="img/machu.jpg" alt="machu picchu"><br>
+                <strong>Machu Pichu</strong>
+                <div class="descripcion">
+                    Una de las Nuevas Siete Maravillas del Mundo, Machu Picchu es un antiguo sitio inca que ofrece vistas impresionantes y una rica historia.
+                </div>
+                <div class="boton-enlace">
+                    <a href="https://maps.app.goo.gl/7SxrpqeJX2RyyPMU7" target="_blank">Ver más</a>
+                </div>
+            </div>
+            <div class="caja">
+                <img src="img/7colores.jpg" alt="7 colores"><br>
+                <strong>Montaña de 7 colores</strong>
+                <div class="descripcion">
+                    Joya natural de los Andes, la Montaña de 7 colores es famosa por sus vibrantes tonalidades, paisajes impresionantes y mistica increible.
+                </div>
+                <div class="boton-enlace">
+                    <a href="https://maps.app.goo.gl/uwZLe6eWh6J5TbvG8" target="_blank">Ver más</a>
+                </div>
+            </div>
+            <div class="caja">
+                <img src="img/valle.jpg" alt="valle"><br>
+                <strong>Valle Sagrado</strong>
+                <div class="descripcion">
+                    Impresionante región andina que alberga antiguos sitios incas, mercados vibrantes y paisajes de ensueño.
+                </div>
+                <div class="boton-enlace">
+                    <a href="https://maps.app.goo.gl/1TKdNFR6QoH4bHPb8" target="_blank">Ver más</a>
+                </div>
+            </div>
+            <div class="caja">
+                <img src="img/maras.webp" alt="maras"><br>
+                <strong>Maras, Moray y Chinchero</strong>
+                <div class="descripcion">
+                    Explora los impresionantes salineras de Maras, los andenes circulares de Moray y el colorido mercado de Chinchero.
+                </div>
+                <div class="boton-enlace">
+                    <a href="https://maps.app.goo.gl/fP8oszQFUysQQ6eF7" target="_blank">Ver más</a>
+                </div>
+            </div>
+            <div class="caja">
+                <img src="img/plaza.webp" alt="plaza"><br>
+                <strong>Plaza de Armas</strong>
+                <div class="descripcion">
+                    El corazón de Cusco, rodeada de impresionantes iglesias coloniales y vibrantes mercados.
+                </div>
+                <div class="boton-enlace">
+                    <a href="https://maps.app.goo.gl/QZ9eEwcJjfKY5tGo7" target="_blank">Ver más</a>
+                </div>
+            </div>
+            <div class="caja">
+                <img src="img/mercado.jpg" alt="mercado"><br>
+                <strong>Mercado San Pedro</strong>
+                <div class="descripcion">
+                    Un bullicioso mercado local donde puedes encontrar productos frescos, artesanías y comidas típicas.
+                </div>
+                <div class="boton-enlace">
+                    <a href="https://maps.app.goo.gl/JxtL14tEhUyYn7r69" target="_blank">Ver más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- este es el itinerario de cusco peru  -->
+    <section id="itinerario">
+        <h2 class="titulo-pagina">CRONOGRAMA DE ACTIVIDADES.</h2>
+        <div class="contenedor">
+            <div class="itinerary">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Día</th>
+                            <th>Actividades</th>
+                            <th>Horarios</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Llegada al hotel, recorrido plaza de armas y aclimatizacion.</td>
+                            <td>6:25 p.m. - 9:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>valle sagrado: pisac, urubamba y ollantaytambo</td>
+                            <td>9:00 a.m. - 7:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Machu picchu (tren+bus+guia)</td>
+                            <td>6:00 a.m. - 9:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Maras, moray y chinchero </td>
+                            <td>7:00 a.m. - 8:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Montaña de los 7 colores (Vinicunca)</td>
+                            <td>9:00 a.m. - 6:00 p.m.</td>
+                        </tr>
+                         <tr>
+                            <td>6</td>
+                            <td>Sacsayhuaman, Q engo y museo Inca</td>
+                            <td>9:00 a.m. - 6:00 p.m.</td>
+                        </tr>
+                         <tr>
+                            <td>7</td>
+                            <td>Mercado San Pedro y Compras todo el dia</td>
+                            <td>9:00 a.m. - 6:00 p.m.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 style="margin-top: 30px;">Presupuesto estimado</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Costo (USD)</th>  <th>Costo (COP)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vuelo internacional promedio</td>
+                            <td>491</td>  <td> $2.042.000</td>
+                        </tr>
+                        <tr>
+                            <td>Hotel (7 noches, 3 estrellas)</td>
+                            <td>350</td>  <td>$1.400.000</td>
+                        </tr>
+                        <tr>
+                            <td>Comida (7 días)</td>
+                            <td>210</td>  <td>$840.000</td>
+                        </tr>
+                        <tr>
+                            <td>Atracciones y tours</td>
+                            <td>130</td>  <td>$520.000</td>
+                        </tr>
+                        <tr>
+                            <td>Transporte local</td>
+                            <td>70</td>  <td>$280.000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>1,251</strong></td>  <td><strong>$5.004.000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!--Primera seccion Quienes somos-->
+
+    <section id="somos">
+        <h2 class="titulo-pagina">¿QUIENES SOMOS?</h2>
+        <div class="contenedor-somos">
+            <div class="caja-somos">
+                <div class="caja">
+                    <img src="img/LogoCS.png" alt="logo">   
+                </div>
+                <div class="descripcion">
+                    <p>
+                    Caminos del sol es una empresa de viajes ubicada en la ciudad de Medellín que brinda planes turísticos a la ciudad de Cusco en Perú, pero su misión no termina ahí pues en alianza con el gobierno nacional busca brindar soluciones a problemáticas socioambientales con el fin de poder alcanzar los objetivos de desarrollo sostenible establecidos en la ONU y que se espera que en el 2030 sean cumplidos.
+                    </p>
+                </div>
+            </div>    
+        </div>
+        <div class="contenedor">   
+            <div class="caja">
+                <h3>Misión</h3>
+                <div class="descripcion">
+                    <p>
+                        Brindar a nuestros viajeros experiencias inolvidables hacia Cusco, Perú, promoviendo un turismo responsable que respete las culturas locales y proteja el medio ambiente. Caminos del Sol trabaja en alianza con actores sociales y gubernamentales para generar un impacto positivo que contribuya al logro de los Objetivos de Desarrollo Sostenible.
+                    </p>
+                </div> 
+            </div>
+            <div class="caja">
+                <h3>Visión</h3>
+                <div class="descripcion">
+                    <p>
+                        Ser en 2030 una agencia líder en Colombia en turismo sostenible hacia Latinoamérica, reconocida por su compromiso con el medio ambiente, la inclusión social y el impulso al desarrollo comunitario a través del viaje consciente.
+                    </p>
+                </div>
+            </div> 
+        </div>
+    </section>
+
+    <!--Tercera parte Problematica-->
+
+    <section id="problematica">
+        <h2 class="titulo-pagina">Comprometidos con la Tierra: Enfrentando la Deforestación en Cusco</h2>
+        <div class="contenedor">
+            <div class="caja-problematica">
+                <div class="descripcion">
+                    <p>
+                        Cusco, además de ser el corazón del antiguo Imperio Inca y uno de los destinos turísticos más emblemáticos del mundo, es también hogar de una biodiversidad única que se extiende desde los Andes hasta la selva amazónica. Sin embargo, esta riqueza natural se encuentra amenazada por un enemigo silencioso: la deforestación.
+                        <h3 class="titulo-pagina">¿Qué está pasando en Cusco?</h3>
+                        
+                        Según datos de Global Forest Watch, entre 2001 y 2023, el departamento de Cusco ha perdido más de 173 mil hectáreas de cobertura arbórea, especialmente en zonas como La Convención, Quispicanchi y Paucartambo. Las principales causas incluyen:
+                        <div class="tabla-ruta">
+                            <table>
+                                <ul>
+                                    <li>Tala ilegal y selectiva de especies maderables.</li>
+                                    <li>Expansión agrícola y ganadera, muchas veces sin planificación.</li>
+                                    <li>Construcción de carreteras y actividad minera informal.</li>
+                                    <li>Incendios forestales provocados o mal gestionados.</li>
+                                </ul>
+                            </table>
+                        </div>
+                        Esta pérdida no solo amenaza especies endémicas y ecosistemas frágiles, sino también la seguridad hídrica, el equilibrio climático y el bienestar de las comunidades locales que dependen del bosque.
+                    </p>
+                </div>
+                <div class="caja">
+                    <img src="img/deforestacion1.jpg" alt="logo"> 
+                </div>
+            </div>   
+        </div>
+    </section>
+    
+    <!--Quinta parte Rutas, costos y opciones-->
+
+    <section id="rutas">
+        <h2 class="titulo-pagina">FORMAS DE VIAJAR.</h2>
+        <div class="contenedor">   
+            <div class="caja">
+                <h2><strong>Mochilero | Bus</strong></h3>
+                <h5><center>Puedes viajar de la siguiente manera:</center></h5>
+                <div class="tabla-ruta">
+                    <table>
+                        <ol>
+                            <li>Medellín - Ipiales</li><br>
+                            <li>Ipiales - Guayaquil</li><br>
+                            <li>Guayaquil - Lima</li><br>
+                            <li>Lima - Cuzco</li>
+                        </ol>
+                    </table>
+                </div>
+                
+                <h5>Precio estimado:</h5>
+                <div class="descripcion">
+                    <h5>Precio en Dolares:799 USD</h5>
+                    <h5>Precio en Pesos Colombianos: 3,322.000 COP</h5>
+                </div>
+                <div class="iconos">
+                    <a href="https://www.rome2rio.com/es/map/Medell%C3%ADn/Cusco#r/Taxi-bus" target="_blank">
+                        <i class="fa-solid fa-bus-simple"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="caja">
+                <h2><strong>Estudiante | Avión</strong></h3>
+                <h5><center>Puedes viajar de la siguiente manera:</center></h5>
+                <div class="tabla-ruta">
+                        <table>
+                            <ul>
+                                <p>Salida del aeropuerto Internacional Jose Maria Cordoba</p>
+                                <li>Hora de salida 18:10-06:10</li>
+                                <li>7 horas 50 minutos escala larga</li><br>
+                                <p>Llegada a el aeropuerto Internacional Jorge Chavez Lima Peru</p>
+                                <li>Hora de llegada 21:10-9:10</li><br>
+                                <p>Salida de el aeropuerto Internacional Jose Chavez Lima Peru</p>
+                                <li>Hora de salida 05:00</li>
+                                <li>Hora de llegada 06:24</li>
+                            </ul>
+                        </table>
+                </div>
+                <h5>Precio estimado:</h5>
+                <div class="descripcion">
+                    <h5>Precio en Dolares: 491 USD</h5>
+                    <h5>Precio en Pesos Colombianos: 2,050.00 COP</h5>
+                </div>
+                <div class="contenedor-iconos">
+                    <div class="iconos">
+                        <a href="https://bestflightsprices.com/es/MDE-CUZ/2025-06-01/2025-06-08?b=bb&gad_source=1&gad_campaignid=22149187093&gbraid=0AAAAACxCAA7j9j7s6kfzKSXMX7Ju6yfCV&gclid=EAIaIQobChMI6_GOuY_CjQMV065aBR1AyyeoEAAYASAAEgJybPD_BwE&sessionToken=CqwBS0xVdl9TQ0x4UU1Bc2dnZEhjRHI4TzM3clFEYzhtcmtsbUtWbTZ0VUtaS2t5QjFKZGVBRUZiOUZEaE1jX3JWbjkzdnVlSl9MdWM3SjNwOFM3c3YybnVSaU5FMVVVaWhZZGxVV0FhbHJQWDAtNWQ5V3ExeXVzZGM1OVdXV0hueXVpQkVRdmJSVy1DbmwtRlpDal9zUzl5NXl3bjNuTHJYMmtLRVpuZ0lRb0NFQSJGCgJDTxIFZXMtRVMaA1VTRCIXCgUKA01ERRIFCgNDVVoaBwjpDxAGGAEiFwoFCgNDVVoSBQoDTURFGgcI6Q8QBhgIKAEwAiokNzAwZDU1M2YtOGJhNi00MWRmLTk1OGEtNzkxY2NmMTI0MDY0-cells1&from=Medell%C3%ADn&to=Cuzco" target="_blank">
+                            <i class="fa-solid fa-plane-departure"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>  
+        </div><br>
+    </section>
+    <section id="requerimiento">
+        <div class="contenedor">
+            <div class="caja-somos">
+                <div class="descripcion">
+                    <p>
+                    REQUERIMIENTO PARA PODER VIAJAR A CUZCO: visa de turismo, residencia o trabajo, pasaporte colombiano, dirección del lugar de alojamiento en Perú, aprobar el control migratorio en Perú, seguros de viaje, permiso para conducir en Perú, seguro médico.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    <!--Parte Requerimientos-->
+
+   
+    <!--Sexta parte Voluntariado-->
+    <section id="voluntariado">
+    <h2 class="titulo-pagina">Compromiso Ambiental de Caminos del Sol: Turismo con Propósito en Cusco, Perú.</h2>
+            <div class="contenedor">
+                <div class="caja-problematica">
+                    <div class="caja-columna">
+                        <div class="descripcion">     
+                        <p>
+                            En Caminos del Sol, creemos que viajar puede ser una poderosa herramienta de transformación, no solo para quienes recorren nuevos destinos, sino también para las comunidades y ecosistemas que los reciben. Por eso, nuestra empresa de viajes con destino a Cusco, Perú, ha asumido un firme compromiso con la protección de los ecosistemas terrestres, alineándonos con el Objetivo de Desarrollo Sostenible de la ONU: "Vida de ecosistemas terrestres".
+                            <br>Cusco, una región de belleza natural incomparable y rica biodiversidad, enfrenta hoy una creciente amenaza: la deforestación. Zonas como La Convención, Paucartambo y Quispicanchi han perdido miles de hectáreas de bosque en los últimos años debido a la agricultura no planificada, la tala ilegal y la expansión urbana. Esta pérdida no solo afecta a la flora y fauna local, sino que también acelera el cambio climático y perjudica a las comunidades indígenas que dependen del bosque.
+                            <br>Ante esta realidad, en Caminos del Sol hemos desarrollado programas de voluntariado ecológico, invitando a nuestros viajeros a formar parte activa de la solución. A través de nuestras alianzas con el gobierno nacional, los visitantes pueden participar en:
+                            <div class="tabla-ruta">
+                                <table>
+                                    <ol>
+                                        <li>Reforestación de áreas degradadas con especies nativas.</li><br>
+                                        <li>Educación ambiental en comunidades rurales y escuelas.</li><br>
+                                        <li>Apoyo en viveros forestales comunitarios.</li><br>
+                                        <li>Limpieza de senderos y protección de áreas naturales.</li>
+                                    </ol>
+                                </table>
+                            </div>
+                            Estas actividades no solo ayudan a restaurar y conservar los ecosistemas, sino que también ofrecen beneficios como hospedaje, alimentación y descuentos en viajes y programas con la agencia de viajes Caminos del Sol, así fortalecemos el vínculo entre el turismo responsable y el desarrollo sostenible.
+                            <br>De esta manera, buscamos que cada viaje tenga un impacto positivo y duradero, sembrando no sólo árboles, sino también conciencia ambiental. Junto a nuestros viajeros, aspiramos a ser parte del cambio hacia un futuro más verde y justo para las generaciones futuras.
+                        </p>
+                        </div>
+                        <div class="boton-enlace">
+                                <a href="#formulario">Inscribete aqui</a>
+                        </div>
+                    </div>
+                    <div class="caja">    
+                        <img src="img/voluntariado1.jpg" alt="machu picchu"><br>
+                        <img src="img/voluntariado2.jpg" alt="machu picchu">             
+                    </div>     
+                </div>   
+            </div>  
+    </section>
+
+    <!-- Formulario -->
+    <section id="formulario">
+        <h2 class="titulo-pagina">SEPARA TU CUPO.</h2>
+        <form action="#" method="POST" id="formulario-talento">
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" placeholder="Escribe tus nombres" required>
+
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Escribe tus apellidos" required>
+
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+
+            <label for="indicativo">Indicativo del País:</label>
+            <select id="indicativo" name="indicativo" required>
+                <option value="">Selecciona</option>
+                <option value="+1">+1 (EE.UU., Canadá)</option>
+                <option value="+34">+34 (España)</option>
+                <option value="+52">+52 (México)</option>
+                <option value="+57">+57 (Colombia)</option>
+                <option value="+44">+44 (Reino Unido)</option>
+                <option value="+91">+91 (India)</option>
+                <!-- Puedes agregar más indicativos aquí -->
+            </select>
+
+            <label for="telefono">Número de Contacto:</label>
+            <input type="text" id="telefono" name="telefono" placeholder="Número sin indicativo" required pattern="[0-9]+" title="Solo números">
+
+            <label for="expectativas">¿Cuáles son tus expectativas?</label>
+            <textarea id="expectativas" name="expectativas" rows="4" placeholder="Escribe aquí tus expectativas" required></textarea>
+
+            <div class="boton-enlace">
+                    <a href="#" target="_blank">Enviar</a>
+            </div>
+        </form>
+    </section>
+
+     <!--FORMULARIO DE COMPRA DE VIAJES-->
+
+    <h2 class="titulo-pagina">RESERVA TU VIAJE.</h2>
+  <form>
+    <label for="nombre">Nombres y Apellidos:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="correo">Correo Electrónico:</label>
+    <input type="email" id="correo" name="correo" required>
+
+    <label for="telefono">Número Telefónico:</label>
+    <input type="tel" id="telefono" name="telefono" required>
+
+    <label for="tipo">Tipo de Viaje:</label>
+    <select id="tipo" name="tipo" onchange="calcularTotal()">
+      <option value="bus">Bus  $3.322.000</option>
+      <option value="avion">Avión  $2.050.000</option>
+    </select>
+
+    <label for="cantidad">Cantidad de Pasajeros:</label>
+    <input type="number" id="cantidad" name="cantidad" value="1" min="1" onchange="calcularTotal()">
+
+    <p id="total">total: $3.322.000</p>
+
+    <div class="boton-enlace">
+        <a href="#" target="_blank">Enviar</a>
+    </div>
+  </form>
+
+  <script>
+    const precios = {
+      bus: 3322000,
+      avion: 2050000
+    };
+
+    function calcularTotal() {
+      const tipo = document.getElementById("tipo").value;
+      const cantidad = parseInt(document.getElementById("cantidad").value);
+      const total = precios[tipo] * cantidad;
+
+      document.getElementById("total").textContent = 
+        "Total: $" + total.toLocaleString("es-CO");
+    }
+
+    // Calcular total al cargar la página
+    window.onload = calcularTotal;
+  </script>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Agencia de Viajes "Caminos del Sol" &copy; 2025</p>
+        <div class="iconos">
+            <a href="https://www.facebook.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-facebook-square"></i>
+            </a>
+            <a href="https://www.instagram.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com/CaminosdelSol" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.youtube.com/c/CaminosdelSol" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </footer>
+    <a href="#top" id="btnScrollTop" title="Ir arriba">⬆</a>
+</body>
+</html> 
